@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Krypton</title>
+
+    <link rel="icon" type="image/png" href="img/logo/MoonMines.png" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+
+<body>
+
+    <div id="pageloader" class="pageloader is-left-to-right is-theme"></div>
+    <div id="infraloader" class="infraloader is-active"></div>    
+    <div class="dark-wrapper">
+        <!-- Landing page Hero -->
+        <section class="hero is-fullheight is-transparent">
+            <div class="hero-head">
+    
+                <!-- Cloned navbar -->
+                <!-- Cloned navbar that comes in on scroll -->
+                <nav x-data="initNavbar()"  x-on:scroll.window="scroll()" id="navbar-clone" class="navbar is-fixed is-dark" :class="{
+                        'is-active': scrolled,
+                        '': !scrolled
+                    }">
+                    <div class="container">
+                        <!-- Brand -->
+                        <div class="navbar-brand">
+                            <a href="index.html" class="navbar-item">
+                                <img class="rotating" src="img/logo/MoonMines2.png"  alt="">
+                                <span class="brand-name">Moon Mines</span>
+                            </a>
+                            <!-- Responsive toggle -->
+                            <div class="navbar-burger" @click="openMobileMenu()">
+                                <div class="menu-toggle">
+                                    <span class="icon-box-toggle" :class="{
+                                            'active': mobileOpen,
+                                            '': !mobileOpen
+                                        }">
+                                        <span class="rotate">
+                                            <i class="icon-line-top"></i>
+                                            <i class="icon-line-center"></i>
+                                            <i class="icon-line-bottom"></i>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Menu -->
+                        <div id="cloneNavbarMenu" class="navbar-menu" :class="{
+                                'is-active': mobileOpen,
+                                '': !mobileOpen
+                            }">
+                            <div class="navbar-end">
+                                <!-- Menu item -->
+                                <div class="navbar-item is-nav-link">
+                                    <a class="is-centered-responsive" href="token.html">Token</a>
+                                </div>
+                                <!-- Menu item -->
+                                <div class="navbar-item is-nav-link">
+                                    <a class="is-centered-responsive" href="#">Miner</a>
+                                </div>
+                                <!-- Menu item -->
+                                <div class="navbar-item is-nav-link">
+                                    <a class="is-centered-responsive" href="index.html">Staking</a>
+                                </div>
+                                <!-- Menu item -->
+                                <div class="navbar-item is-nav-link">
+                                    <a class="is-centered-responsive" href="index.html">Swap</a>
+                                </div>
+                                <!-- Menu item -->
+                                <div class="navbar-item is-nav-link">
+                                    <a class="is-centered-responsive" href="roadmap.html">Roadmap</a>
+                                </div>
+                                <!-- Menu item -->
+
+                                <!-- Menu item -->
+                                <div class="navbar-item is-nav-link">
+                                    <a class="is-centered-responsive" href="#" target="_blank">
+                                        <img class="telegram" src="img/logo/telegram.svg" alt="">
+                                        Telegram
+                                    </a>
+                                </div>
+                                <!-- Sign up -->
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+                <!-- /Cloned navbar -->
+                <!-- Static navbar -->
+                <!-- Static navbar -->
+                <nav x-data="initNavbar()" class="navbar is-light" :class="{
+                        'is-dark-mobile': mobileOpen,
+                        '': !mobileOpen
+                    }">
+                    <div class="container">
+                        <!-- Brand -->
+                        <div class="navbar-brand">
+                            <a href="index.html" class="navbar-item">
+                                <img class="rotating" src="img/logo/MoonMines2.png"  width="50px" alt="">
+                                <span class="brand-name">Moon Mines</span>
+                            </a>
+                            <!-- Responsive toggle -->
+                            <div class="navbar-burger" @click="openMobileMenu()">
+                                <div class="menu-toggle">
+                                    <span class="icon-box-toggle" :class="{
+                                            'active': mobileOpen,
+                                            '': !mobileOpen
+                                        }">
+                                        <span class="rotate">
+                                            <i class="icon-line-top"></i>
+                                            <i class="icon-line-center"></i>
+                                            <i class="icon-line-bottom"></i>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Menu -->
+                        <div id="navbarMenu" class="navbar-menu light-menu" :class="{
+                                'is-active': mobileOpen,
+                                '': !mobileOpen
+                            }">
+                            <div class="navbar-end">
+                                <!-- Menu item -->
+                                <div class="navbar-item is-nav-link">
+                                    <a class="is-centered-responsive" href="token.html">Token</a>
+                                </div>
+                                <!-- Menu item -->
+                                <div class="navbar-item is-nav-link">
+                                    <a class="is-centered-responsive" href="#">Miner</a>
+                                </div>
+                                <!-- Menu item -->
+                                <div class="navbar-item is-nav-link">
+                                    <a class="is-centered-responsive" href="index.html">Staking</a>
+                                </div>
+                                <!-- Menu item -->
+                                <div class="navbar-item is-nav-link">
+                                    <a class="is-centered-responsive" href="index.html">Swap</a>
+                                </div>
+                                <!-- Menu item -->
+                                <div class="navbar-item is-nav-link">
+                                    <a class="is-centered-responsive" href="roadmap.html">Roadmap</a>
+                                </div>
+                                <!-- Menu item -->
+                                <div class="navbar-item is-nav-link">
+                                    <a class="is-centered-responsive" href="#" target="_blank">
+                                        <img class="telegram" src="img/logo/telegram.svg" alt="">
+                                        Telegram
+                                    </a>
+                                </div>
+                                <!-- Sign up -->
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+                <!-- /Static navbar -->
+            </div>
+    
+            <!-- Animated particles -->
+            <div x-data="initHero()" x-init="initParticles()" id="particles-js"></div>
+    
+            <!-- Hero Image and Title -->
+            <div class="hero-body">
+                <div class="container">
+                    <div class="columns is-vcentered">
+    
+                        <!-- Landing page Title -->
+                        <div class="column is-5 landing-caption">
+                            <h1 class="title is-1 is-light is-semibold is-spaced main-title">Cryptocurrency Miner and Token</h1>
+                            <h2 class="subtitle is-5 is-light is-thin">
+                                Miner brought to the next level. Join to our Miner with a daily return of 8%.
+                            </h2>
+                            <!-- CTA -->
+                            <p class="buttons">
+                                <a href="#Poocoin" class="button k-button k-primary raised has-gradient is-fat is-bold">
+                                    <span class="text">Poocoin</span>
+                                    <span class="front-gradient"></span>
+                                </a>
+                                <a href="#Miner" class="button k-button k-primary raised has-gradient is-fat is-bold">
+                                    <span class="text">Miner</span>
+                                    <span class="front-gradient"></span>
+                                </a>
+                            </p>
+    
+                        </div>
+                        <!-- Hero image -->
+                        <div class="column is-7">
+                            <figure class="image">
+                                <img src="img/logo/MoonMines3.PNG" alt="">
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Hero footer -->
+        </section>
+        <!-- /Landing page Hero -->
+    
+        <!-- Icon Features section -->
+        <section id="start" class="section is-transparent is-relative">
+            <!-- Container -->
+            <div class="container">
+    
+    
+                <!-- Content wrapper -->
+                <div class="content-wrapper is-medium">
+                    <div class="columns is-vcentered">
+                        <!-- Feature -->
+                        <div class="column is-4">
+                            <div class="feature">
+                                <img src="img/icons/compact.svg" alt="" data-aos="fade-up" data-aos-delay="100" data-aos-offset="200" data-aos-easing="ease-out-quart">
+                                <h4 class="title is-6 is-tight is-light">Moon Mines Ecosystem</h4>
+                                <p>Sustantaible cosystem within our token and our Miner. The Miner and token taxes works together to maintain two of them alive.</p>
+                            </div>
+                        </div>
+                        <!-- Feature -->
+                        <div class="column is-4">
+                            <div class="feature">
+                                <img src="img/icons/stacked.svg" alt="" data-aos="fade-up" data-aos-delay="300" data-aos-offset="200" data-aos-easing="ease-out-quart">
+                                <h4 class="title is-6 is-tight is-light">Staking</h4>
+                                <p>Flexible Staking platform so our holders can stake their Moon Mines tokens and increase the positions with our huge APY%.</p>
+                            </div>
+                        </div>
+                        <!-- Feature -->
+                        <div class="column is-4">
+                            <div class="feature">
+                                <img src="img/icons/chained.svg" alt="" data-aos="fade-up" data-aos-delay="500" data-aos-offset="200" data-aos-easing="ease-out-quart">
+                                <h4 class="title is-6 is-tight is-light">Decentralized Exchange</h4>
+                                <p>We going to make our own DEX, so you can trade directly from our page with all the token that exist in the BSC</p>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- Play video button -->
+                    <div class="cta-wrapper has-text-centered">
+                        <div class="video-button levitate js-modal-btn" data-video-id="6WG7D47tGb0">
+                            <img src="img/icons/play.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+                <!-- Content wrapper -->
+            </div>
+            <!-- /Container -->
+        </section>
+        <!-- /Icon Features section -->
+    
+        <!-- Side Features section -->
+        <section id="big-gradient" class="section is-transparent">
+            <!-- Container -->
+            <div class="container">
+                <!-- Divider -->
+                <div class="divider is-centered"></div>
+                <!-- Title & subtitle -->
+                <h2 class="title is-light is-semibold has-text-centered is-spaced">Moon Mines Ecosystem</h2>
+                <h4 class="subtitle is-6 is-light has-text-centered is-compact">We made a ecosystem within our miner and our token. Taxes of both of them works togheter to make a sustentable ecosystem with buy backs and burns for our Moon Mines Token making a deflationary token and reinvest for our Miner so The TVL will increase constantly making a safer Miner.</h4>
+    
+                <!-- Content wrapper -->
+                <div class="content-wrapper is-large">
+                    <div class="columns is-vcentered">
+    
+                        <!-- Feature content -->
+                        <div class="column is-5 is-offset-1">
+                            <div class="side-feature-content">
+    
+                                <h3 class="title is-4 is-light"><img src="img/icons/ico/bitbanner.svg" alt=""> <span>Token Building</span></h3>
+                                <div class="divider is-long"></div>
+                                <p class="is-light">Moon Mines token going to be pushed with massive Buy backs and with an intense marketing around telegram, twitter, youtube and more.</p>
+                                <div class="cta-wrapper">
+                                    <a href="token.html" class="button k-button k-primary raised has-gradient is-bold">
+                                        <span class="text">Learn More</span>
+                                        <span class="front-gradient"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Feature image -->
+                        <div class="column is-7">
+                            <img class="side-feature" src="img/illustrations/token.svg" alt="">
+                        </div>
+                    </div>
+    
+                    <div class="columns is-vcentered">
+                        <!-- Feature image desktop -->
+                        <div class="column is-7 is-hidden-mobile">
+                            <img class="side-feature" src="img/illustrations/blockchain-blocks.svg" alt="">
+                        </div>
+    
+                        <!-- Feature content -->
+                        <div class="column is-5">
+                            <div class="side-feature-content">
+    
+                                <h3 class="title is-4 is-light"><img src="img/icons/ico/bitnetwork.svg" alt=""> <span>Moon Mines Bank</span></h3>
+                                <div class="divider is-long"></div>
+                                <p class="is-light">All the taxes from the miner(12%) and the token(9%) goes to the The Moon Mines Bank. All the BNB collected there are distributed around all the ecosystem wallets like Marketing(50% first week, then 40%), Buy Backs(30%), Back to the tvl(10% first week, then 20%) and to the Team(10%).</p>
+                                <div class="cta-wrapper">
+                                    <a href="#" class="button k-button k-primary raised has-gradient is-bold">
+                                        <span class="text">Bank Distribution</span>
+                                        <span class="front-gradient"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Feature image only for mobile -->
+                        <div class="column is-7 is-hidden-desktop is-hidden-tablet">
+                            <img class="side-feature" src="img/illustrations/blockchain-blocks.svg" alt="">
+                        </div>
+                    </div>
+    
+                    <div class="columns is-vcentered">
+                        <!-- Feature content -->
+                        <div class="column is-5 is-offset-1">
+                            <div class="side-feature-content">
+    
+                                <h3 class="title is-4 is-light"><img src="img/icons/ico/bitmining.svg" alt=""> <span>Staking Platform</span></h3>
+                                <div class="divider is-long"></div>
+                                <p class="is-light">Staking Platform to complete The Moon Mines Ecosystem. Holders will earn tokens with our huge APY% Staking Platform.</p>
+                                <div class="cta-wrapper">
+                                    <a href="#" class="button k-button k-primary raised has-gradient is-bold">
+                                        <span class="text">Staking (coming soon)</span>
+                                        <span class="front-gradient"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Feature image -->
+                        <div class="column is-7">
+                            <img class="side-feature" src="img/illustrations/crypto-mining.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+                <!-- /Content wrapper -->
+            </div>
+            <!-- /Container -->
+        </section>
+        <!-- /Side Features section -->
+    
+        <!-- ICO section -->
+
+        <!-- /ICO section -->
+    
+        <!-- App section -->
+
+        <!-- /App section -->
+    
+        <!-- Company section -->
+        <!-- /Company section -->
+    
+        <!-- Contact section -->
+        <!-- <section class="section is-medium is-darkest">
+            
+            <div class="container">
+            
+                <div class="divider is-centered"></div>
+               
+                <h2 class="title is-light is-semibold has-text-centered is-spaced">Get in Touch</h2>
+                <h4 class="subtitle is-6 is-light has-text-centered is-compact">Viderer malorum sadipscing cum ei. Eu impetus perfecto sit, no sea labore detraxit. Primis mediocrem necessitatibus an vis. Ut sea pertinax perpetua, eruditi volumus quaestio ex mel, has ei tota homero.</h4>
+    
+               
+                <div class="content-wrapper is-large">
+                    <div class="columns">
+                        <div class="column is-8 is-offset-2">
+                            
+                            <div class="contact-icons">
+                                
+                                <a class="contact-icon" data-aos="fade-up" data-aos-delay="100" data-aos-offset="200" data-aos-easing="ease-out-quart">
+                                    <img class="is-phone" src="img/icons/phone.svg" alt="">
+                                </a>
+                                
+                                <a class="contact-icon" data-aos="fade-up" data-aos-delay="300" data-aos-offset="200" data-aos-easing="ease-out-quart">
+                                    <img class="is-phone" src="img/icons/mail.svg" alt="">
+                                </a>
+                               
+                                <a class="contact-icon" data-aos="fade-up" data-aos-delay="500" data-aos-offset="200" data-aos-easing="ease-out-quart">
+                                    <img class="is-telegram" src="img/logo/telegram.svg" alt="">
+                                </a>
+                            </div> 
+                        </div>
+                    </div>
+    
+                    <div class="columns">
+                        <div class="column is-6 is-offset-3">
+                            
+                            <form class="contact-form">
+                               
+                                <div class="control-material is-secondary">      
+                                    <input class="material-input " type="text" required>
+                                    <span class="material-highlight"></span>
+                                    <span class="bar"></span>
+                                    <label>Name</label>
+                                </div>
+                               
+                                <div class="control-material is-secondary">      
+                                    <input class="material-input " type="email" required>
+                                    <span class="material-highlight"></span>
+                                    <span class="bar"></span>
+                                    <label>Email</label>
+                                </div>
+                                
+                                <div class="control-material is-secondary">  
+                                    <textarea rows="3"></textarea>
+                                    <span class="material-highlight"></span>
+                                    <span class="bar"></span>
+                                    <label>Message </label>
+                                </div>
+    
+                             
+                                <div class="has-text-centered">
+                                    <button class="button is-button k-button k-primary raised has-gradient is-fat is-bold is-submit">
+                                        <span class="text">Send message</span>
+                                        <span class="front-gradient"></span>
+                                    </button>
+                                </div>
+                            </form>
+                         
+                        </div>
+                    </div>
+    
+    
+                </div>
+                
+            </div> -->
+            <!-- Container -->
+        </section>
+        <!-- Contact section -->
+    </div>
+    
+    <footer class="krypton-footer">
+        <div class="container">
+            <!-- Logo -->
+            <div class="footer-logo">
+                <a href="./index.html">
+                    <img class="rotating"  src="img/logo/MoonMines2.PNG" width="150px" height="150px" alt="">
+                    <div class="brand-name">Moon Mines</div>
+                    <div class="brand-subtitle">Miner brought to another level</div>
+                </a>
+            </div>
+            
+            <!-- Columns -->
+            <div class="columns footer-columns is-vcentered">
+                <div class="column is-4">
+                    <!-- Links group -->
+                    <ul class="footer-links">
+
+                        <li>
+                            <a href="#">Token</a>
+                        </li>
+    
+                        <li>
+                            <a href="#">Roadmap</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Newsletter -->
+                <div class="column is-4">
+                    <div class="subscribe-block">
+                        <form>
+                            <!-- Field -->
+                            <div class="control">
+                                <!-- Special input -->
+                                <input class="krypton-subscribe-input" type="email" name="email" placeholder="">
+                                <button class="subscribe-button">
+                                    <span>Buy</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- Links group -->
+                <div class="column is-4">
+                    <ul class="footer-links">
+
+                        <li>
+                            <a href="#">Miner</a>
+                        </li>
+    
+                        <li>
+                            <a href="#">Telegram</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Copyright -->
+            <p class="k-copyright">© 2022 | Moon Mines. All Rights Reserved</p>
+            <br>
+            <!-- Made by -->
+            <p class="coded-by">Designed and Coded by <a href="https://t.me/tomasborto" target="_blank">Tomas</a></p>
+        </div>
+        
+        <!-- Absolute image -->
+        <img class="solar-system" src="img/bg/solar.svg" alt="">
+    </footer>    <!-- Back To Top Button -->
+    <div x-data="initBackToTop()" x-on:scroll.window="scroll($event)" @click="goTop($event)" id="backtotop"><a href="javascript:" :class="{
+        'visible': scrolled,
+        '': !scrolled
+    }"></a></div>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="./js/bundle.js"></script>
+
+</body>
+
+</html>
